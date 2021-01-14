@@ -1,4 +1,5 @@
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Main {
 
@@ -6,22 +7,29 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int number, x, y = 0, z = 1;
+        ArrayList testList = new ArrayList();
+        testList.add("50");
+        testList.add("60");
+        testList.add("70");
 
-        Scanner scannerQ = new Scanner(System.in);
-        System.out.println("Введите количество значений");
+        System.out.println(testList.size());
 
-        number = scannerQ.nextInt();
-        System.out.println("Серия чисел Фибоначчи: ");
+        System.out.println("Цикл While:");
+        Iterator iter = testList.iterator();
 
-        for (int i = 0; i <= number; i++) {
+        while (iter.hasNext()) {
+            System.out.println(iter.next());
+        }
 
-            x = y;
-            y = z;
-            z = x + y;
+        System.out.println("Улучшенный цикл For:");
+        for (Object o : testList) {
+            System.out.println(o);
 
-            System.out.println(x + "");    // если вы хотите вывести в текущей строке - используйте print()
+        }
 
+        System.out.println("Цикл For:");
+        for (int i = 0; i < testList.size(); i++) {
+            System.out.println(testList.get(i));
         }
 
     }
