@@ -4,12 +4,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String st1 = "Мы готовимся     к интервью   на вакансию    Java разработчика";
+        String st1 = " Мы готовимся     к интервью   на вакансию    Java разработчика";
 
-        //Используем метод replaceAll()
-        String st2 = st1.replaceAll("\\s", "");
-        System.out.println(st2);
+        char[] charsArray = st1.toCharArray();
+        StringBuffer strB = new StringBuffer();
 
+        for (int i = 0; i < charsArray.length; i++) {
+
+            if( (charsArray[i] != ' ') && (charsArray [i] != '\t') ) {
+                strB.append(charsArray [i]);
+            }
+
+        }
+
+        System.out.println(strB);
     }
 }
 
