@@ -1,6 +1,4 @@
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.Scanner;
 
 public class Main {
 
@@ -8,29 +6,30 @@ public class Main {
 
     public static void main(String[] args) {
 
-        HashMap<Integer, String> keyValue = new HashMap<>();
+        int temp, number;
+        boolean numberIsPrime = true;
 
-        keyValue.put(1, "Hello");
-        keyValue.put(2, "World");
-        keyValue.put(3, "Have a nice day!");
+        Scanner scannerQ = new Scanner(System.in);
+        number = scannerQ.nextInt();
+        scannerQ.close();
 
-        System.out.println(keyValue.size());
-        System.out.println("Цикл While:");
+        for (int x = 2; x <= number / 2; x++) {
+            int tempNumber = number % x;
 
-        Iterator iter = keyValue.entrySet().iterator();
-
-        while (iter.hasNext()) {
-            Map.Entry qurentMe = (Map.Entry) iter.next();
-            System.out.println("Ключ это " + qurentMe.getKey() + " Значение это " + qurentMe.getValue());
+            if (tempNumber == 0) {
+                numberIsPrime = false;
+                break;
+            }
         }
 
-        System.out.println("Цикл For:");
+        if (numberIsPrime)
+            System.out.println(number + " число является простым");
 
-        for (Map.Entry qurentMe2 : keyValue.entrySet()) {
-            System.out.println("Ключ это: " + qurentMe2.getKey() + " Значение это: " + qurentMe2.getValue());
-        }
+        else
+            System.out.println(number + " число не является простым");
 
     }
 
 }
+
 
