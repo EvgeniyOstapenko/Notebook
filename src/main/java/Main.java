@@ -1,5 +1,14 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -7,33 +16,25 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ArrayList testList = new ArrayList();
-        testList.add("50");
-        testList.add("60");
-        testList.add("70");
+        System.setProperty("webdriver.chrome.driver", "C:\\driver\\chromedriver.exe");
 
-        System.out.println(testList.size());
+        ChromeOptions cOptions = new ChromeOptions();
+        cOptions.addArguments("--disable-arguments");
 
-        System.out.println("Цикл While:");
-        Iterator iter = testList.iterator();
+        WebDriver curentDriver = new ChromeDriver();
+        curentDriver.manage().window().maximize();
+        curentDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        curentDriver.navigate().to("https://www.google.com.ua");
 
-        while (iter.hasNext()) {
-            System.out.println(iter.next());
-        }
+        WebElement curentElement = curentDriver.findElement(By.name("q"));
+        curentElement.sendKeys("Testing");
+        curentElement.submit();
 
-        System.out.println("Улучшенный цикл For:");
-        for (Object o : testList) {
-            System.out.println(o);
-
-        }
-
-        System.out.println("Цикл For:");
-        for (int i = 0; i < testList.size(); i++) {
-            System.out.println(testList.get(i));
-        }
+        WebDriverWait waitWD = new WebDriverWait(curentDriver, 20);
+        WebElement secondElement = waitWD.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Тестирование программного обеспечения - Википедия")));
+        secondElement.click();
 
     }
-
 }
 
 
