@@ -1,23 +1,38 @@
+import java.util.Stack;
+
 public class Main {
 
     //https://itvdn.com/ru/blog/article/test-java-20
 
-    public static void main(String[] args) {
+    public static void main(String args[]) {
 
-        String st1 = " Мы готовимся     к интервью   на вакансию    Java разработчика";
+        System.out.println(balancedParenthensies("{(a,b)}"));
+        System.out.println(balancedParenthensies("{(a},b)"));
+        System.out.println(balancedParenthensies("{)(a,b}"));
+    }
 
-        char[] charsArray = st1.toCharArray();
-        StringBuffer strB = new StringBuffer();
-
-        for (int i = 0; i < charsArray.length; i++) {
-
-            if( (charsArray[i] != ' ') && (charsArray [i] != '\t') ) {
-                strB.append(charsArray [i]);
+    public static boolean balancedParenthensies(String s) {
+        Stack<Character> stack = new Stack<Character>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '[' || c == '(' || c == '{') {
+                stack.push(c);
+            } else if (c == ']') {
+                if (stack.isEmpty() || stack.pop() != '[') {
+                    return false;
+                }
+            } else if (c == ')') {
+                if (stack.isEmpty() || stack.pop() != '(') {
+                    return false;
+                }
+            } else if (c == '}') {
+                if (stack.isEmpty() || stack.pop() != '{') {
+                    return false;
+                }
             }
 
         }
-
-        System.out.println(strB);
+        return stack.isEmpty();
     }
 }
 
