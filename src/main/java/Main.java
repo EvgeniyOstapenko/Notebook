@@ -6,27 +6,23 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String inputString, reversedString = "";
+        int number, x, y = 0, z = 1;
 
         Scanner scannerQ = new Scanner(System.in);
-        int stringLength;
+        System.out.println("Введите количество значений");
 
-        System.out.println("Введите число или строку");
+        number = scannerQ.nextInt();
+        System.out.println("Серия чисел Фибоначчи: ");
 
-        inputString = scannerQ.nextLine();
-        stringLength = inputString.length();
+        for (int i = 0; i <= number; i++) {
 
-        for (int x = stringLength - 1; x >= 0; x--) {
-            reversedString = reversedString + inputString.charAt(x);
+            x = y;
+            y = z;
+            z = x + y;
+
+            System.out.println(x + "");    // если вы хотите вывести в текущей строке - используйте print()
+
         }
-
-        System.out.println("перевернутое значение: " + reversedString);
-
-        if (inputString.equals(reversedString))
-            System.out.println("Введенное значение является палиндромом");
-
-        else
-            System.out.println("Введенное значение не является палиндромом");
 
     }
 
