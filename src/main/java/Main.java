@@ -4,22 +4,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int y = 0, x, tempNumber;
+        String st1 = "Мы готовимся     к интервью   на вакансию    Java разработчика";
 
-        int qurentNumber = 371; //Данное число мы будем проверять на то, является ли оно числом Армстронга
-        tempNumber = qurentNumber;
-
-        while (qurentNumber > 0) {
-            x = qurentNumber % 10;
-            qurentNumber = qurentNumber / 10;
-            y = y + (x * x * x);
-        }
-
-        if (tempNumber == y)
-            System.out.println("Данное число является числом Армстронга");
-
-        else
-            System.out.println("Данное число не является числом Армстронга");
+        //Используем метод replaceAll()
+        String st2 = st1.replaceAll("\\s", "");
+        System.out.println(st2);
 
     }
 }
