@@ -1,28 +1,34 @@
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Main {
 
+    //https://itvdn.com/ru/blog/article/test-java-20
+
     public static void main(String[] args) {
 
-        String st = "Current task posted for Java developers developers";
+        HashMap<Integer, String> keyValue = new HashMap<>();
 
-        String[] words = st.split(" ");
+        keyValue.put(1, "Hello");
+        keyValue.put(2, "World");
+        keyValue.put(3, "Have a nice day!");
 
-        HashMap<String, Integer> keyValue = new HashMap<>();
+        System.out.println(keyValue.size());
+        System.out.println("Цикл While:");
 
-        for (int i = 0; i <= words.length - 1; i++) {
+        Iterator iter = keyValue.entrySet().iterator();
 
-            if (keyValue.containsKey(words[i])) {
-                int counter = keyValue.get(words[i]);
-                keyValue.put(words[i], counter + 1);
-
-            } else {
-                keyValue.put(words[i], 1);
-            }
-
+        while (iter.hasNext()) {
+            Map.Entry qurentMe = (Map.Entry) iter.next();
+            System.out.println("Ключ это " + qurentMe.getKey() + " Значение это " + qurentMe.getValue());
         }
 
-        System.out.println(keyValue);
+        System.out.println("Цикл For:");
+
+        for (Map.Entry qurentMe2 : keyValue.entrySet()) {
+            System.out.println("Ключ это: " + qurentMe2.getKey() + " Значение это: " + qurentMe2.getValue());
+        }
 
     }
 
