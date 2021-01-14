@@ -6,27 +6,27 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int temp, number;
-        boolean numberIsPrime = true;
+        String inputString, reversedString = "";
 
         Scanner scannerQ = new Scanner(System.in);
-        number = scannerQ.nextInt();
-        scannerQ.close();
+        int stringLength;
 
-        for (int x = 2; x <= number / 2; x++) {
-            int tempNumber = number % x;
+        System.out.println("Введите число или строку");
 
-            if (tempNumber == 0) {
-                numberIsPrime = false;
-                break;
-            }
+        inputString = scannerQ.nextLine();
+        stringLength = inputString.length();
+
+        for (int x = stringLength - 1; x >= 0; x--) {
+            reversedString = reversedString + inputString.charAt(x);
         }
 
-        if (numberIsPrime)
-            System.out.println(number + " число является простым");
+        System.out.println("перевернутое значение: " + reversedString);
+
+        if (inputString.equals(reversedString))
+            System.out.println("Введенное значение является палиндромом");
 
         else
-            System.out.println(number + " число не является простым");
+            System.out.println("Введенное значение не является палиндромом");
 
     }
 
