@@ -4,23 +4,22 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String st = "Hello";
-        int counter = 0;
+        int y = 0, x, tempNumber;
 
-        char[] charsArray = st.toCharArray();
-        System.out.println("Повторяющиеся символы тут:");
+        int qurentNumber = 371; //Данное число мы будем проверять на то, является ли оно числом Армстронга
+        tempNumber = qurentNumber;
 
-        for (int i = 0; i < st.length(); i++) {
-            for (int j = i + 1; j < st.length(); j++) {
-
-                if (charsArray[i] == charsArray[j]) {
-                    System.out.println(charsArray[j]);
-                    counter++;
-                    break;
-                }
-            }
-
+        while (qurentNumber > 0) {
+            x = qurentNumber % 10;
+            qurentNumber = qurentNumber / 10;
+            y = y + (x * x * x);
         }
+
+        if (tempNumber == y)
+            System.out.println("Данное число является числом Армстронга");
+
+        else
+            System.out.println("Данное число не является числом Армстронга");
 
     }
 }
